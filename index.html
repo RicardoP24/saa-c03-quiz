@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Solutions Architect Associate SAA-C03 Quiz Master</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <div class="logo-container">
+                <div class="logo-icon">☁️</div>
+                <h1>AWS Solutions Architect SAA-C03</h1>
+            </div>
+            
+            <div class="stats-panel">
+                <div class="stat-item correct">
+                    <span class="label">Acertos:</span>
+                    <span id="correct-count">0</span>
+                </div>
+                <div class="stat-item incorrect">
+                    <span class="label">Erros:</span>
+                    <span id="incorrect-count">0</span>
+                </div>
+                <div class="stat-item progress">
+                    <span class="label">Progresso:</span>
+                    <span id="progress-percent">0%</span>
+                </div>
+            </div>
+
+            <div class="controls-top">
+                <select id="test-selector">
+                    <option value="1">Simulado 1</option>
+                    <option value="2">Simulado 2</option>
+                    <option value="3">Simulado 3</option>
+                </select>
+                <button id="reset-btn" class="secondary-btn">Reiniciar Simulado</button>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-text">Questão <span id="currentNum">1</span> de <span id="totalNum">100</span></div>
+                <div class="progress-bar"><div id="progressBarFill"></div></div>
+            </div>
+        </header>
+
+        <main id="quiz-container">
+            <div class="card" id="questionCard">
+                <div class="question-text" id="questionText">A carregar...</div>
+                <div class="options-grid" id="optionsGrid">
+                    <!-- Options will be injected here -->
+                </div>
+            </div>
+
+            <div class="explanation-card hidden" id="explanationCard">
+                <div class="explanation-header">
+                    <span class="status-icon" id="statusIcon"></span>
+                    <h3 id="statusTitle">Correto!</h3>
+                </div>
+                <div class="explanation-body">
+                    <div class="reason-section">
+                        <h4>Justificação Técnica</h4>
+                        <p id="reasonText"></p>
+                    </div>
+                    <div class="distractors-section">
+                        <h4>Análise de Distratores</h4>
+                        <div id="distractorsText"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <button id="prevBtn" class="btn secondary" disabled>Anterior</button>
+            <div class="center-controls">
+                <button id="showExplanationBtn" class="btn ghost hidden">Ver Explicação</button>
+            </div>
+            <button id="nextBtn" class="btn primary">Próxima</button>
+        </footer>
+    </div>
+    <script type="module" src="/main.js"></script>
+</body>
+</html>
