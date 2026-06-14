@@ -332,4 +332,85 @@ Object.entries(categories).forEach(([pageKey, pageCat]) => {
     fs.writeFileSync(path.join(__dirname, `${pageKey}.html`), htmlTemplate, 'utf8');
 });
 
-console.log(Object.keys(categories).length + ' páginas geradas com sucesso!');
+// GENERATE MAIN HUB (study.html)
+let moduleCardsHTML = '';
+Object.entries(categories).forEach(([pageKey, pageCat]) => {
+    moduleCardsHTML += `
+        <a href="${pageKey}.html" class="module-card">
+            <span class="module-icon">${pageCat.icon}</span>
+            <h4>${pageCat.title}</h4>
+            <p>${pageCat.group}</p>
+        </a>
+    `;
+});
+
+const hubNavigationHTML = navigationHTML;
+
+const studyHubTemplate = `<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Estudo - AWS SAA-C03</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .study-section { background: var(--card-bg); backdrop-filter: blur(10px); padding: 2rem; border-radius: 1.5rem; border: 1px solid var(--glass-border); box-shadow: var(--shadow); margin-bottom: 2rem; }
+        .study-section h2 { color: var(--primary); margin-bottom: 1.5rem; font-size: 1.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 0.5rem; }
+        .study-section p { line-height: 1.6; color: var(--text-muted); margin-bottom: 1rem; }
+        .module-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+        .module-card { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--glass-border); padding: 1.5rem; border-radius: 1rem; transition: all 0.2s ease; text-decoration: none; color: inherit; }
+        .module-card:hover { border-color: var(--primary); transform: translateY(-5px); background: rgba(255, 153, 0, 0.05); }
+        .module-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+        .module-card h4 { color: var(--text-main); margin-bottom: 0.5rem; }
+        .exam-tip { background: rgba(245, 158, 11, 0.1); border-left: 4px solid var(--primary); padding: 1rem; border-radius: 0 0.5rem 0.5rem 0; margin: 1.5rem 0; font-style: italic; color: #fcd34d; }
+        .exam-tip strong { color: var(--primary); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; display: block; margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body>
+    <div id="app" class="study-app">
+        <header>
+            <div class="logo-container">
+                <div class="logo-icon">📚</div>
+                <h1>Guia de Estudo SAA-C03 (Deep-Dive)</h1>
+            </div>
+            <div class="controls-top">
+                <button onclick="window.location.href='index.html'" class="secondary-btn">← Voltar aos Simulados</button>
+            </div>
+        </header>
+
+        <div class="study-layout">
+            <aside class="sidebar">
+                <h3>Módulos de Estudo</h3>
+                <nav>
+                    <a href="study.html" class="active sub-link" style="padding-left:0.5rem !important;">Visão Geral</a>
+                    ${hubNavigationHTML}
+                </nav>
+            </aside>
+
+            <main class="study-content">
+                <section class="study-section">
+                    <h2>Bem-vindo ao Guia Definitivo</h2>
+                    <p>Este hub contém todo o currículo AWS SAA-C03, atualizado para englobar não só a teoria fundamental, mas também as centenas de cenários práticos identificados nos seus simulados.</p>
+                    
+                    <div class="exam-tip">
+                        <strong>Dica de Estudo</strong>
+                        No exame SAA-C03, preste especial atenção a palavras-chave como <strong>"custo mais baixo"</strong>, <strong>"alta disponibilidade"</strong> e <strong>"menor esforço operacional"</strong> para decidir entre serviços semelhantes.
+                    </div>
+
+                    <h3>Módulos Disponíveis</h3>
+                    <div class="module-grid">
+                        ${moduleCardsHTML}
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+</html>`;
+
+fs.writeFileSync(path.join(__dirname, 'study.html'), studyHubTemplate, 'utf8');
+
+console.log(Object.keys(categories).length + ' páginas secundárias e o hub principal gerados com sucesso!');
