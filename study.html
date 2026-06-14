@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Estudo - AWS SAA-C03</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .study-section {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 1.5rem;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+        .study-section h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 0.5rem;
+        }
+        .study-section p {
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .module-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        .module-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            background: rgba(255, 153, 0, 0.05);
+        }
+        .module-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .module-card h4 {
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="study-app">
+        <header>
+            <div class="logo-container">
+                <div class="logo-icon">📚</div>
+                <h1>Guia de Estudo SAA-C03 (Deep-Dive)</h1>
+            </div>
+            <div class="controls-top">
+                <button onclick="window.location.href='index.html'" class="secondary-btn">← Voltar aos Simulados</button>
+            </div>
+        </header>
+
+        <div class="study-layout">
+            <aside class="sidebar">
+                <h3>Módulos de Estudo</h3>
+                <nav>
+                    <a href="study.html" class="active">Visão Geral</a>
+                    <a href="study-compute.html">Computação</a>
+                    <a href="study-storage.html">Armazenamento</a>
+                    <a href="study-databases.html">Bases de Dados</a>
+                    <a href="study-networking.html">Redes (VPC)</a>
+                    <a href="study-security.html">Segurança e IAM</a>
+                    <a href="study-integration.html">Integração</a>
+                </nav>
+            </aside>
+
+            <main class="study-content">
+                <section class="study-section">
+                    <h2>Bem-vindo ao Guia de Estudos</h2>
+                    <p>Este guia foi desenhado especificamente com base nas questões mais difíceis e frequentes dos simulados SAA-C03. O objetivo não é ser um dicionário completo, mas focar diretamente nos tópicos que garantem a aprovação.</p>
+                    
+                    <div class="exam-tip">
+                        <strong>Dica de Estudo</strong>
+                        No exame SAA-C03, não basta saber o que o serviço faz. Precisas saber <em>quando</em> usar um serviço em detrimento de outro, prestando especial atenção a palavras-chave como <strong>"custo mais baixo"</strong>, <strong>"alta disponibilidade"</strong> e <strong>"menor esforço operacional"</strong>.
+                    </div>
+
+                    <h3>Módulos Disponíveis</h3>
+                    <div class="module-grid">
+                        <a href="study-compute.html" class="module-card">
+                            <span class="module-icon">💻</span>
+                            <h4>Computação</h4>
+                            <p>EC2, Lambda, Fargate, Spot Instances.</p>
+                        </a>
+                        <a href="study-storage.html" class="module-card">
+                            <span class="module-icon">💾</span>
+                            <h4>Armazenamento</h4>
+                            <p>S3, Glacier Tiers, Snowball, EFS.</p>
+                        </a>
+                        <a href="study-databases.html" class="module-card">
+                            <span class="module-icon">🗄️</span>
+                            <h4>Bases de Dados</h4>
+                            <p>RDS Multi-AZ, DynamoDB, RPO/RTO.</p>
+                        </a>
+                        <a href="study-networking.html" class="module-card">
+                            <span class="module-icon">🌐</span>
+                            <h4>Redes (VPC)</h4>
+                            <p>CloudFront, API Gateway, NAT, Endpoints.</p>
+                        </a>
+                        <a href="study-security.html" class="module-card">
+                            <span class="module-icon">🔒</span>
+                            <h4>Segurança e IAM</h4>
+                            <p>WAF, Shield Advanced, SCPs, Roles.</p>
+                        </a>
+                        <a href="study-integration.html" class="module-card">
+                            <span class="module-icon">🔄</span>
+                            <h4>Integração</h4>
+                            <p>SQS FIFO, Step Functions, EventBridge.</p>
+                        </a>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+</html>

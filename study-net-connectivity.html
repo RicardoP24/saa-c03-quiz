@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conectividade e Peering - Guia AWS SAA-C03</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .study-section { background: var(--card-bg); backdrop-filter: blur(10px); padding: 2rem; border-radius: 1.5rem; border: 1px solid var(--glass-border); box-shadow: var(--shadow); margin-bottom: 2rem; }
+        .study-section h2 { color: var(--primary); margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 0.5rem; }
+        .study-section p { line-height: 1.6; color: var(--text-muted); margin-bottom: 1.5rem; }
+        .table-container { overflow-x: auto; margin-bottom: 1.5rem; border-radius: 0.75rem; border: 1px solid var(--glass-border); }
+        table { width: 100%; border-collapse: collapse; text-align: left; background: rgba(255, 255, 255, 0.02); }
+        th, td { padding: 1.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05); color: var(--text-muted); vertical-align: top; }
+        th { background: rgba(255, 255, 255, 0.05); color: var(--primary); font-weight: 600; font-size: 1.1rem; }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: rgba(255, 255, 255, 0.05); color: var(--text-main); }
+        .service-name { color: var(--primary); font-size: 1.1rem; white-space: nowrap; width: 25%; }
+        .use-case-list { padding-left: 1.5rem; margin: 0; }
+        .use-case-list li { margin-bottom: 0.75rem; line-height: 1.5; font-size: 0.95rem;}
+        .use-case-list li:last-child { margin-bottom: 0; }
+    </style>
+</head>
+<body>
+    <div id="app" class="study-app">
+        <header>
+            <div class="logo-container">
+                <div class="logo-icon">🌐</div>
+                <h1>Deep-Dive Definitivo SAA-C03</h1>
+            </div>
+            <div class="controls-top">
+                <button onclick="window.location.href='index.html'" class="secondary-btn">← Voltar aos Simulados</button>
+            </div>
+        </header>
+
+        <div class="study-layout">
+            <aside class="sidebar">
+                <h3>Módulos de Estudo</h3>
+                <nav>
+                    <a href="study.html" class="sub-link">Visão Geral Principal</a>
+                    
+<div class="nav-group">Armazenamento</div>
+<a href="study-storage-s3.html" id="link-study-storage-s3" class="sub-link">S3 e Glacier</a>
+<a href="study-storage-hybrid.html" id="link-study-storage-hybrid" class="sub-link">Híbrido e Edge (Gateways/Snow)</a>
+<a href="study-storage-block.html" id="link-study-storage-block" class="sub-link">EBS e EFS</a>
+
+<div class="nav-group">Computação</div>
+<a href="study-compute-ec2.html" id="link-study-compute-ec2" class="sub-link">EC2, Spot e Autoscaling</a>
+<a href="study-compute-serverless.html" id="link-study-compute-serverless" class="sub-link">Serverless e Containers</a>
+
+<div class="nav-group">Bases de Dados</div>
+<a href="study-db-relational.html" id="link-study-db-relational" class="sub-link">Relacionais (RDS e Aurora)</a>
+<a href="study-db-nosql.html" id="link-study-db-nosql" class="sub-link">NoSQL e Analytics</a>
+
+<div class="nav-group">Redes (VPC)</div>
+<a href="study-net-vpc.html" id="link-study-net-vpc" class="sub-link">VPC e Fundamentos</a>
+<a href="study-net-connectivity.html" id="link-study-net-connectivity" class="sub-link active">Conectividade e Peering</a>
+<a href="study-net-edge.html" id="link-study-net-edge" class="sub-link">Edge e Entrega de Conteúdo</a>
+
+<div class="nav-group">Segurança</div>
+<a href="study-sec-iam.html" id="link-study-sec-iam" class="sub-link">Identidade e Acesso</a>
+<a href="study-sec-protection.html" id="link-study-sec-protection" class="sub-link">Proteção e Defesa Web</a>
+
+<div class="nav-group">Integração</div>
+<a href="study-integration-messaging.html" id="link-study-integration-messaging" class="sub-link">Desacoplamento e Mensagens</a>
+
+                </nav>
+            </aside>
+
+            <main class="study-content">
+                <section class="study-section">
+                    <h2>Redes (VPC): Conectividade e Peering</h2>
+                    <p>Conectar múltiplas VPCs e ligar ambientes corporativos on-premises à AWS de forma segura.</p>
+                    
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Serviço AWS</th>
+                                    <th>Definição Teórica e Aplicações Práticas</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+            <tr>
+                <td class="service-name"><strong>VPC Peering</strong></td>
+                <td>
+                    <p style="color: var(--text-main); font-weight: 500;">Conexão 1-para-1 entre duas VPCs. Não é transitivo (se A liga a B, e B liga a C, A não consegue falar com C através de B).</p>
+                    
+                <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed rgba(255,255,255,0.1);">
+                    <strong style="color:var(--primary); font-size: 0.85rem; text-transform:uppercase;">Casos Práticos do Simulado:</strong>
+                    <ul class="use-case-list" style="margin-top: 0.5rem;">
+                        <li>O AWS Transit Gateway funciona como um router na nuvem regional totalmente gerado.</li>
+                    </ul>
+                </div>
+            
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="service-name"><strong>AWS Transit Gateway</strong></td>
+                <td>
+                    <p style="color: var(--text-main); font-weight: 500;">Hub de rede centralizado. Resolve a complexidade de rotas não transitivas. Permite ligar milhares de VPCs e VPNs locais a um router central.</p>
+                    
+                <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed rgba(255,255,255,0.1);">
+                    <strong style="color:var(--primary); font-size: 0.85rem; text-transform:uppercase;">Casos Práticos do Simulado:</strong>
+                    <ul class="use-case-list" style="margin-top: 0.5rem;">
+                        <li>O AWS Transit Gateway funciona como um router na nuvem regional totalmente gerado.</li>
+                    </ul>
+                </div>
+            
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="service-name"><strong>AWS Direct Connect</strong></td>
+                <td>
+                    <p style="color: var(--text-main); font-weight: 500;">Uma ligação física de rede dedicada entre o seu datacenter e a AWS. Latência consistente. Não passa pela internet pública.</p>
+                    
+                <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed rgba(255,255,255,0.1);">
+                    <strong style="color:var(--primary); font-size: 0.85rem; text-transform:uppercase;">Casos Práticos do Simulado:</strong>
+                    <ul class="use-case-list" style="margin-top: 0.5rem;">
+                        <li>O AWS Direct Connect liga fisicamente a rede local diretamente a um ponto de presença da AWS através de linhas de fibra ótica dedicadas, ignorando a internet pública por completo e oferecendo conex...</li><li>O AWS Transit Gateway funciona como um router na nuvem regional totalmente gerado.</li>
+                    </ul>
+                </div>
+            
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="service-name"><strong>AWS VPN</strong></td>
+                <td>
+                    <p style="color: var(--text-main); font-weight: 500;">Conexão Site-to-Site segura via túneis IPSec através da internet pública.</p>
+                    
+                <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed rgba(255,255,255,0.1);">
+                    <strong style="color:var(--primary); font-size: 0.85rem; text-transform:uppercase;">Casos Práticos do Simulado:</strong>
+                    <ul class="use-case-list" style="margin-top: 0.5rem;">
+                        <li>O AWS Transit Gateway funciona como um router na nuvem regional totalmente gerado.</li>
+                    </ul>
+                </div>
+            
+                </td>
+            </tr>
+        
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+</html>

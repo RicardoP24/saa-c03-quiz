@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desacoplamento e Mensagens - Guia AWS SAA-C03</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .study-section { background: var(--card-bg); backdrop-filter: blur(10px); padding: 2rem; border-radius: 1.5rem; border: 1px solid var(--glass-border); box-shadow: var(--shadow); margin-bottom: 2rem; }
+        .study-section h2 { color: var(--primary); margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 0.5rem; }
+        .study-section p { line-height: 1.6; color: var(--text-muted); margin-bottom: 1.5rem; }
+        .table-container { overflow-x: auto; margin-bottom: 1.5rem; border-radius: 0.75rem; border: 1px solid var(--glass-border); }
+        table { width: 100%; border-collapse: collapse; text-align: left; background: rgba(255, 255, 255, 0.02); }
+        th, td { padding: 1.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05); color: var(--text-muted); vertical-align: top; }
+        th { background: rgba(255, 255, 255, 0.05); color: var(--primary); font-weight: 600; font-size: 1.1rem; }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: rgba(255, 255, 255, 0.05); color: var(--text-main); }
+        .service-name { color: var(--primary); font-size: 1.1rem; white-space: nowrap; width: 25%; }
+        .use-case-list { padding-left: 1.5rem; margin: 0; }
+        .use-case-list li { margin-bottom: 0.75rem; line-height: 1.5; font-size: 0.95rem;}
+        .use-case-list li:last-child { margin-bottom: 0; }
+    </style>
+</head>
+<body>
+    <div id="app" class="study-app">
+        <header>
+            <div class="logo-container">
+                <div class="logo-icon">🔄</div>
+                <h1>Deep-Dive Definitivo SAA-C03</h1>
+            </div>
+            <div class="controls-top">
+                <button onclick="window.location.href='index.html'" class="secondary-btn">← Voltar aos Simulados</button>
+            </div>
+        </header>
+
+        <div class="study-layout">
+            <aside class="sidebar">
+                <h3>Módulos de Estudo</h3>
+                <nav>
+                    <a href="study.html" class="sub-link">Visão Geral Principal</a>
+                    
+<div class="nav-group">Armazenamento</div>
+<a href="study-storage-s3.html" id="link-study-storage-s3" class="sub-link">S3 e Glacier</a>
+<a href="study-storage-hybrid.html" id="link-study-storage-hybrid" class="sub-link">Híbrido e Edge (Gateways/Snow)</a>
+<a href="study-storage-block.html" id="link-study-storage-block" class="sub-link">EBS e EFS</a>
+
+<div class="nav-group">Computação</div>
+<a href="study-compute-ec2.html" id="link-study-compute-ec2" class="sub-link">EC2, Spot e Autoscaling</a>
+<a href="study-compute-serverless.html" id="link-study-compute-serverless" class="sub-link">Serverless e Containers</a>
+
+<div class="nav-group">Bases de Dados</div>
+<a href="study-db-relational.html" id="link-study-db-relational" class="sub-link">Relacionais (RDS e Aurora)</a>
+<a href="study-db-nosql.html" id="link-study-db-nosql" class="sub-link">NoSQL e Analytics</a>
+
+<div class="nav-group">Redes (VPC)</div>
+<a href="study-net-vpc.html" id="link-study-net-vpc" class="sub-link">VPC e Fundamentos</a>
+<a href="study-net-connectivity.html" id="link-study-net-connectivity" class="sub-link">Conectividade e Peering</a>
+<a href="study-net-edge.html" id="link-study-net-edge" class="sub-link">Edge e Entrega de Conteúdo</a>
+
+<div class="nav-group">Segurança</div>
+<a href="study-sec-iam.html" id="link-study-sec-iam" class="sub-link">Identidade e Acesso</a>
+<a href="study-sec-protection.html" id="link-study-sec-protection" class="sub-link">Proteção e Defesa Web</a>
+
+<div class="nav-group">Integração</div>
+<a href="study-integration-messaging.html" id="link-study-integration-messaging" class="sub-link active">Desacoplamento e Mensagens</a>
+
+                </nav>
+            </aside>
+
+            <main class="study-content">
+                <section class="study-section">
+                    <h2>Integração: Desacoplamento e Mensagens</h2>
+                    <p>Manter arquiteturas flexíveis e resilientes a picos de tráfego usando Pub/Sub e Filas.</p>
+                    
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Serviço AWS</th>
+                                    <th>Definição Teórica e Aplicações Práticas</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+            <tr>
+                <td class="service-name"><strong>Amazon SQS (Simple Queue Service)</strong></td>
+                <td>
+                    <p style="color: var(--text-main); font-weight: 500;">Serviço de mensagens em fila (Pull). Fundamental para desacoplar componentes (decoupling) e amortecer picos de carga. O SQS FIFO garante que a ordem é mantida exatamente 1 vez.</p>
+                    
+                <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed rgba(255,255,255,0.1);">
+                    <strong style="color:var(--primary); font-size: 0.85rem; text-transform:uppercase;">Casos Práticos do Simulado:</strong>
+                    <ul class="use-case-list" style="margin-top: 0.5rem;">
+                        <li>O Amazon SQS (Simple Queue Service) é um serviço de enfileiramento de mensagens totalmente gerido e altamente fiável que permite desacoplar componentes de software.</li><li>O Amazon SQS FIFO Queue garante a entrega de mensagens exatamente uma vez (Exactly-Once processing) e a ordem estrita First-In, First-Out, possuindo suporte nativo a deduplicação de mensagens basea...</li><li>O SQS FIFO (First-In, First-Out) é projetado especificamente para garantir que as mensagens sejam processadas exatamente uma vez e mantendo a ordenação estrita.</li>
+                    </ul>
+                </div>
+            
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="service-name"><strong>Amazon SNS (Simple Notification Service)</strong></td>
+                <td>
+                    <p style="color: var(--text-main); font-weight: 500;">Serviço de notificações Pub/Sub (Push). Envia mensagens para múltiplos assinantes simultaneamente (Emails, SMS, ou outras filas SQS &quot;fan-out&quot;).</p>
+                    
+                <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed rgba(255,255,255,0.1);">
+                    <strong style="color:var(--primary); font-size: 0.85rem; text-transform:uppercase;">Casos Práticos do Simulado:</strong>
+                    <ul class="use-case-list" style="margin-top: 0.5rem;">
+                        <li>O AWS Budgets permite configurar orçamentos personalizados para acompanhar custos ou utilização na AWS.</li>
+                    </ul>
+                </div>
+            
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="service-name"><strong>AWS Step Functions</strong></td>
+                <td>
+                    <p style="color: var(--text-main); font-weight: 500;">Máquina de estados visual que orquestra componentes de microsserviços. Ideal para gerir o fluxo longo e condicional de várias funções Lambda.</p>
+                    
+                <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed rgba(255,255,255,0.1);">
+                    <strong style="color:var(--primary); font-size: 0.85rem; text-transform:uppercase;">Casos Práticos do Simulado:</strong>
+                    <ul class="use-case-list" style="margin-top: 0.5rem;">
+                        <li>O AWS Step Functions é um serviço de orquestração visual serverless de fluxos de trabalho baseados em máquinas de estado.</li>
+                    </ul>
+                </div>
+            
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="service-name"><strong>Amazon EventBridge</strong></td>
+                <td>
+                    <p style="color: var(--text-main); font-weight: 500;">Autocarro de eventos (Event Bus). Substituiu o CloudWatch Events. Despoleta reações (ex: acionar um Lambda) sempre que um evento na sua conta ocorre.</p>
+                    
+                <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed rgba(255,255,255,0.1);">
+                    <strong style="color:var(--primary); font-size: 0.85rem; text-transform:uppercase;">Casos Práticos do Simulado:</strong>
+                    <ul class="use-case-list" style="margin-top: 0.5rem;">
+                        <li>O Amazon EventBridge é um barramento de eventos serverless que facilita a conexão de aplicações usando dados de recursos AWS, de aplicações SaaS e aplicações próprias do utilizador.</li>
+                    </ul>
+                </div>
+            
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="service-name"><strong>Amazon Kinesis Data Streams</strong></td>
+                <td>
+                    <p style="color: var(--text-main); font-weight: 500;">Serviço projetado especificamente para ingerir um volume maciço de dados em fluxo (streaming) em tempo real (ex: logs de IoT ou de clickstream).</p>
+                    
+                <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed rgba(255,255,255,0.1);">
+                    <strong style="color:var(--primary); font-size: 0.85rem; text-transform:uppercase;">Casos Práticos do Simulado:</strong>
+                    <ul class="use-case-list" style="margin-top: 0.5rem;">
+                        <li>O Amazon Kinesis Data Streams é projetado especificamente para ingerir e processar fluxos de dados massivos em tempo real em larga escala.</li>
+                    </ul>
+                </div>
+            
+                </td>
+            </tr>
+        
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+</html>

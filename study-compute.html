@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computação e Serverless - Guia AWS SAA-C03</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .study-section {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 1.5rem;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+        .study-section h2 { color: var(--primary); margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 0.5rem; }
+        .study-section p { line-height: 1.6; color: var(--text-muted); margin-bottom: 1.5rem; }
+        
+        .table-container { overflow-x: auto; margin-bottom: 1.5rem; border-radius: 0.75rem; border: 1px solid var(--glass-border); }
+        table { width: 100%; border-collapse: collapse; text-align: left; background: rgba(255, 255, 255, 0.02); }
+        th, td { padding: 1.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05); color: var(--text-muted); vertical-align: top; }
+        th { background: rgba(255, 255, 255, 0.05); color: var(--primary); font-weight: 600; font-size: 1.1rem; }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: rgba(255, 255, 255, 0.05); color: var(--text-main); }
+        
+        .service-name { color: var(--primary); font-size: 1.1rem; white-space: nowrap; width: 25%; }
+        .use-case-list { padding-left: 1.5rem; margin: 0; }
+        .use-case-list li { margin-bottom: 0.75rem; line-height: 1.5; }
+        .use-case-list li:last-child { margin-bottom: 0; }
+        
+        .exam-tip {
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 1rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #fcd34d;
+        }
+        .exam-tip strong { color: var(--primary); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; display: block; margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body>
+    <div id="app" class="study-app">
+        <header>
+            <div class="logo-container">
+                <div class="logo-icon">💻</div>
+                <h1>Tabelas Comparativas - Computação e Serverless</h1>
+            </div>
+            <div class="controls-top">
+                <button onclick="window.location.href='index.html'" class="secondary-btn">← Voltar aos Simulados</button>
+            </div>
+        </header>
+
+        <div class="study-layout">
+            <aside class="sidebar">
+                <h3>Módulos de Estudo</h3>
+                <nav>
+                    <a href="study.html">Visão Geral</a>
+                    <a href="study-compute.html" class="active">Computação</a>
+                    <a href="study-storage.html" >Armazenamento</a>
+                    <a href="study-databases.html" >Bases de Dados</a>
+                    <a href="study-networking.html" >Redes (VPC)</a>
+                    <a href="study-security.html" >Segurança e IAM</a>
+                    <a href="study-integration.html" >Integração</a>
+                </nav>
+            </aside>
+
+            <main class="study-content">
+                <section class="study-section">
+                    <h2>Guia Detalhado de Computação e Serverless</h2>
+                    <p>Esta tabela foi gerada automaticamente a partir da análise das 300 questões do simulado. Apresenta os serviços chave e os cenários exatos em que são a resposta correta no exame.</p>
+                    
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Serviço AWS</th>
+                                    <th>Características e Casos de Uso Avaliados</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                <tr>
+                    <td class="service-name"><strong>EC2</strong></td>
+                    <td>
+                        <ul class="use-case-list">
+                            <li>O AWS Fargate Spot é extremamente económico para cargas de trabalho baseadas em contentores tolerantes a falhas (até 70% de desconto face ao preço Fargate normal), sem o overhead de gerir grupos de...</li><li>A hibernação do EC2 guarda o estado da memória RAM no volume EBS raiz.</li><li>O AWS Nitro Enclaves permite criar ambientes de computação altamente isolados (enclaves) dentro de instâncias EC2.</li><li>O Systems Manager Session Manager permite sessões seguras e controladas a instâncias EC2 através do browser ou AWS CLI, sem a necessidade de chaves SSH, IPs públicos ou portas SSH expostas na inter...</li><li>As instâncias EC2 Spot aproveitam a capacidade de computação sobressalente da AWS com descontos maciços de até 90% em comparação com o preço sob demanda.</li>
+                        </ul>
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td class="service-name"><strong>Lambda</strong></td>
+                    <td>
+                        <ul class="use-case-list">
+                            <li>O Application Load Balancer suporta a integração nativa com funções Lambda e permite o roteamento de caminhos HTTP (por exemplo, /api/users para Lambda-Users, /api/orders para Lambda-Orders).</li><li>O AWS Secrets Manager foi projetado especificamente para gerir, proteger e rodar segredos de forma centralizada.</li><li>A combinação API Gateway + Lambda + DynamoDB é a arquitetura de microsserviços serverless por excelência na AWS, oferecendo altíssima escalabilidade e latências de milissegundos para operações de l...</li><li>O AWS Lambda é o principal serviço de computação serverless da AWS.</li><li>O combo API Gateway, Lambda e DynamoDB é a arquitetura Serverless definitiva recomendada pela AWS, apresentando escalonamento instantâneo, redundância Multi-AZ ativa e custo baseado puramente no us...</li>
+                        </ul>
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td class="service-name"><strong>Fargate</strong></td>
+                    <td>
+                        <ul class="use-case-list">
+                            <li>O AWS Fargate Spot é extremamente económico para cargas de trabalho baseadas em contentores tolerantes a falhas (até 70% de desconto face ao preço Fargate normal), sem o overhead de gerir grupos de...</li><li>O Fargate Spot fornece capacidade serverless com descontos massivos de até 70% comparado ao Fargate padrão, perfeito para tarefas tolerantes a falhas rápidas.</li>
+                        </ul>
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td class="service-name"><strong>ECS</strong></td>
+                    <td>
+                        <ul class="use-case-list">
+                            <li>O AWS Fargate Spot é extremamente económico para cargas de trabalho baseadas em contentores tolerantes a falhas (até 70% de desconto face ao preço Fargate normal), sem o overhead de gerir grupos de...</li><li>O Fargate Spot fornece capacidade serverless com descontos massivos de até 70% comparado ao Fargate padrão, perfeito para tarefas tolerantes a falhas rápidas.</li>
+                        </ul>
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td class="service-name"><strong>ALB</strong></td>
+                    <td>
+                        <ul class="use-case-list">
+                            <li>O Step Scaling responde a alarmes do CloudWatch de forma incremental (adicionando mais instâncias dependendo da diferença entre a métrica atual e o limite do alarme).</li><li>O Application Load Balancer suporta a integração nativa com funções Lambda e permite o roteamento de caminhos HTTP (por exemplo, /api/users para Lambda-Users, /api/orders para Lambda-Orders).</li><li>O AWS WAF protege as camadas de aplicação contra SQLi e XSS, enquanto o CloudFront e o Shield Advanced defendem de forma integrada contra ataques DDoS volumétricos (camadas 3/4/7).</li>
+                        </ul>
+                    </td>
+                </tr>
+            
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
