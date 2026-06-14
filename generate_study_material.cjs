@@ -170,6 +170,8 @@ const categories = {
             { name: 'AWS WAF (Web Application Firewall)', theory: 'Defende contra explorações a nível da aplicação (Layer 7), como SQL Injections, Cross-Site Scripting (XSS) e bloqueia listas de IPs em endpoints HTTP.', keywords: ['WAF', 'SQLi', 'XSS', 'Cross-Site'] },
             { name: 'AWS Shield', theory: 'Defesa contra ataques de negação de serviço (DDoS) nas camadas 3 e 4. O Shield Advanced oferece proteção financeira e atua ativamente durante ataques massivos.', keywords: ['Shield', 'DDoS'] },
             { name: 'AWS KMS (Key Management Service)', theory: 'A espinha dorsal para encriptação em repouso (at rest). Cria e gere chaves de encriptação (CMKs).', keywords: ['KMS', 'Encriptação'] },
+            { name: 'AWS Secrets Manager', theory: 'Serviço projetado especificamente para gerir, proteger e RODAR AUTOMATICAMENTE segredos (chaves de API, credenciais de BD) usando funções Lambda embutidas.', keywords: ['Secrets Manager', 'Rotação'] },
+            { name: 'AWS Systems Manager Parameter Store', theory: 'Armazenamento centralizado para dados de configuração e senhas (SecureString). Não possui funcionalidade nativa de rotação automática de segredos como o Secrets Manager.', keywords: ['Parameter Store', 'Systems Manager', 'SSM'] },
             { name: 'Amazon Macie', theory: 'Serviço de segurança baseado em Machine Learning dedicado a identificar informações confidenciais PII/dados sensíveis expostos em buckets S3.', keywords: ['Macie', 'PII'] },
             { name: 'Amazon GuardDuty', theory: 'Detetor de ameaças inteligente que monitoriza logs do CloudTrail, VPC Flow Logs e consultas de DNS em tempo real para encontrar comportamento anómalo.', keywords: ['GuardDuty', 'Ameaça'] }
         ]
